@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfFixedDoc"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowState="Maximized">
+        Title="{Binding Title}" Height="640" Width="800" WindowState="Normal" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Open" Command="{Binding OpenFileCommand}" />
@@ -15,7 +15,19 @@
             <MenuItem Header="Save PDF" Command="{Binding SavePdfCommand}" />
         </Menu>
 
-        <DocumentViewer x:Name="docview" Document="{Binding LiveDoc}"  />
+        <DocumentViewer x:Name="docview" Document="{Binding LiveDoc}">
+            <DocumentViewer.Resources>
+                <!-- Hides the search box-->
+                <Style TargetType="ContentControl">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>
+
+                <!-- Hides the toolbar -->
+                <!--<Style TargetType="ToolBar">
+                    <Setter Property="Visibility" Value="Collapsed" />
+                </Style>-->
+            </DocumentViewer.Resources>
+        </DocumentViewer>
 
     </DockPanel>
 </Window>

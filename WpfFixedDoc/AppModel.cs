@@ -31,6 +31,9 @@ namespace WpfFixedDoc
         private IDocumentPaginatorSource _liveDoc;
 
         [ObservableProperty]
+        private string _title = "Fixed Docs";
+
+        [ObservableProperty]
         private int _counter;
 
         [RelayCommand]
@@ -221,7 +224,7 @@ namespace WpfFixedDoc
             PageContent page2Content = new PageContent();
             ((IAddChild)page2Content).AddChild(page2);
 
-            //document.Pages.Add(page2Content);
+            document.Pages.Add(page2Content);
 
             return document;
         }
